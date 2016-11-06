@@ -1,0 +1,80 @@
+		<div class="InfoL pull-left relative">
+			<div class="mask"></div>
+			<div class="absolute listenInfo">
+				<p><i class="iconfont white">&#xe685;</i><span class="white">暂无此功能</span></p>
+				<p><i class="iconfont white">&#xe7c4;</i><span class="white workZan"><%=music.zanNum%></span></p>
+				<p><i class="iconfont white">&#xe601;</i><span class="white CommentNum"><%=list.length%></span></p>
+			</div>
+			<div class="absolute Info-sm">
+				<img src="<%=music.img%>" width="100%" height="100%" alt="" />
+				<audio src="<%=music.file%>" class="hide" name="<%=music.id%>" id="musicTrue"></audio>
+				<div class="playOn absolute white"><i class="fa fa-play"></i></div>
+			</div>
+			<div class="absolute songInfo text-center">
+				<h3><%=music.songName%></h3>
+				<p><%=music.user%></p>
+			</div>
+			<div class="absolute zan <%if(user==null){%>disabled<%}%>">
+				<i class="fa fa-thumbs-o-up"></i>
+				<span class="absolute addOne white animated">+1</span>
+			</div>
+			<img src="<%=music.img%>" width="100%" height="100%" alt="" class="absolute bigImg" />
+		</div>
+		<div class="InfoR pull-right relative">
+			<div class="songOrder relative">
+				<img src="<%=author.head%>" width="100%" height="100%" alt="" />
+				<div class="level text-center absolute"><i class="fa fa-star"></i></div>
+			</div>
+			<div class="author text-center"><b><%=music.user%></b></div>
+			<div class="authorInfo grey">
+				<p><i class="iconfont">&#xe685;</i><span>暂无此功能</span></p>
+				<p><i class="iconfont">&#xe7c4;</i><span class="workZan"><%=author.zanNum%></span></p>
+				<p><i class="iconfont">&#xe601;</i><span class="CommentNum" id="CommentNum"><%=author.commentNum%></span></p>
+			</div>
+			<div class="comClose absolute"><i class="fa fa-times"></i></div>
+		</div>
+		<div class="InfoB clear">
+			<div class="lev overflow">
+				<span>#<%=music.type%></span>
+			</div>
+			<div class="songH">
+				<p><b><%=music.songName%></b><span class="text-muted font-sm"><%=music.timex%></span></p>
+				<p><%=music.introduce%></p>
+			</div>
+			<div class="commont">
+				<div class="comBox overflow comAdd">
+					<div class="comBoxL pull-left">
+						<img src="img/head.png" width="40" height="40" alt="" />
+					</div>
+					<div class="comBoxR pull-left">
+						<form action="">
+							<div class="form-group input-group">
+								<textarea id="comment" class="form-control" placeholder="评论..."></textarea>
+								<span class="input-group-btn">
+                                <button class="btn btn-default <%if(user==null){%>disabled<%}%>" id="commentBtn" <%if(user==null){%>disabled<%}%> type="button"><span class="zizi">评论</span></button>
+								</span>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="comRel" id="commentAll">
+                   <%if(list.length==0){%>
+                       <p class="text-center text-muted">暂无评论</p>
+                   <%}else{%>
+                        <%for(var i=0;i<list.length;i++){%>
+                           <div class="comBox overflow">
+                            <div class="comBoxL pull-left">
+                                <img src="<%=list[i].head%>" width="40" height="40" alt="" />
+                            </div>
+                            <div class="comBoxR pull-left overflow">
+                                <div class="pull-left comInfo"><b><%=list[i].user%></b>
+                                    <p class="font-sm text-muted pull-right"><%=list[i].timex%></p>
+                                </div>
+                                <div class="font-sm conInfoRel clear"><%=list[i].comment%></div>
+                            </div>
+                        </div>
+                        <%}%>
+                    <%}%>
+				</div>
+			</div>
+		</div>

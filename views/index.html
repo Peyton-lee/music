@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>music</title>
+		<link rel="shortcut icon"href="img/icon.ico">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/font-diy/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="css/animate.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.min.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+	</head>
+
+	<body onselectstart="return false">
+
+		<!--
+    	作者：771412508@qq.com
+    	时间：2016-09-25
+    	描述：Music
+    -->
+		<audio id="music" src="mp3/bg.mp3" controls="controls" preload="auto" loop="loop" autoplay="autoplay" class="hide">
+		</audio>
+
+		<div class="index_top">
+			<div class="top_in relative">
+				<div class="absolute top_img"><img src="img/fresh.png" /></div>
+				<div class="menu">
+					<a href="#" class="blog text-center block pull-left">BLOG</a>
+					<div class="pull-left white musicBtn active "><i class="icon iconfont white">&#xe605;</i></div>
+					<div class="sign pull-right">
+						<%if(user!=null){%><span id="logout" class="pointer"><a href="logout">SIGN OUT</a></span>
+						<%}else{%>
+						<span id="sign_in" class="white pointer">SIGN IN</span>
+						<%}%>
+						<span id="sign_up" class="pointer ">SIGN UP</span>
+					</div>
+					<%if(user!=null){%>
+					<div class="userInfo pull-right pointer"><img src="<%=head%>" width="25" height="25" alt="" />
+						<%=user%>
+					</div>
+					<%}%>
+				</div>
+				<div class="logo text-center absolute"><img src="img/logo.png" alt="" / class="run rotateIn animated" time='0.8'></div>
+				<div class="banner_center absolute">
+					<span style="margin-right: 35px;"><img src="img/font1.png" alt="m" / class="run bounceInUp animated" time='2'>
+				<img src="img/font2.png" alt="u" / class="run bounceInUp animated" time='2.1'>
+				<img src="img/font3.png" alt="s" / class="run bounceInUp animated" time='2.2'>
+				<img src="img/font4.png" alt="i" / class="run bounceInUp animated" time='2.3'>
+				<img src="img/font5.png" alt="c" / class="run bounceInUp animated" time='2.4'></span>
+					<span><img src="img/font6.png" alt="w" / class="run bounceInUp animated" time='2.5'>
+				<img src="img/font7.png" alt="o" / class="run bounceInUp animated" time='2.6'>
+				<img src="img/font8.png" alt="r" / class="run bounceInUp animated" time='2.7'>
+				<img src="img/font9.png" alt="l" / class="run bounceInUp animated" time='2.8'>
+				<img src="img/font10.png" alt="d" / style="margin: 0;" class="run bounceInUp animated" time='2.9'></span>
+					<div class="line absolute run animated bounceInRight" time='4'></div>
+				</div>
+				<div class="banner_bottom text-center absolute"><img src="img/banner_bottom.png" alt="" / class="slideInUp run animated" time='3'></div>
+			</div>
+		</div>
+
+		<div class="singBox">
+			<div class="singTop text-center"><img src="img/io.png" alt="" /></div>
+			<div class="top_song">
+				<div class="title"><b>Top songs</b></div>
+				<div class="song_menu text-right overflow">
+					<div class="search pull-right">
+						<input class="radius" id="keyText" type="text" placeholder="name" />
+						<button class="radius search-btn"><i class="fa fa-search"></i></button>
+					</div>
+					<div class="music_style pull-left">
+						<span class="active typeSelect">Cover</span>
+						<span class="typeSelect">Guitar</span>
+					</div>
+				</div>
+				<!--<div class="screan overflow">
+				<span class="active radius">HOT</span>
+				<span class="radius">TIME</span>
+			</div>-->
+				<div class="songs row clear" id="musicList">
+				</div>
+				<div class="text-right form-group page_box" id="pageInfo">
+				</div>
+			</div>
+		</div>
+
+		<div class="uploadBox overflow">
+			<div class="uploadImg pull-left"></div>
+			<div class="upload pull-left">
+				<div class="title">Upload work</div>
+				<p>This is a platform to share the music,
+					<br /> enjoy the fun of music.</p>
+				<%if(user==null){%>
+				<div class="ti">登录才能上传喔，亲（づ￣3￣）づ╭❤～</div>
+				<%}%>
+				<button class="btn-orange <%if(user==null){%>disabled<%}%>" type="button" id="upload" <%if(user==null){%>disabled<%}%> >Upload</button>
+			</div>
+		</div>
+
+		<div class="index_footer text-center">
+			<img src="img/logo2.png" alt="" />
+			<p class="mutu">©2016 Plain Theory • Rainy Mood is a registered trademark</p>
+		</div>
+
+		<div class="musicBox animated">
+			<div class="music relative">
+				<audio src="mp3/bg.mp3" class="hide" id="musicGo"></audio>
+				<div class="musicPic pull-left"><img src="img/2.jpg" alt="" width="70" height="70" /></div>
+				<div class="musicInfo pull-left">
+					<span class="musicName"></span>
+					<span class="manName"></span>
+					<span class="musicTime text-sm"></span>
+				</div>
+				<div class="pull-right play hide">
+					<span class="btn-play pointer"><i class="fa fa-backward"></i></span>
+					<span class="btn-play pointer"><i class="fa fa-play"></i></span>
+					<span class="btn-play pointer hide"><i class="fa fa-pause"></i></span>
+					<span class="btn-play pointer"><i class="fa fa-forward"></i></span>
+				</div>
+			</div>
+			<div class="absolute musicBoxclose"><i class="fa fa-times white"></i></div>
+		</div>
+
+		<div class="backTop transition"><b><i class="fa fa-angle-up"></i></b></div>
+
+		<div id="mask" class="transition"></div>
+
+		<div class="signInBox animated tapBox relative">
+			<div class="signTitle relative">SIGN IN<span class="absolute close"><i class="fa fa-times"></i></inspan></div>
+		<div class="signBox">
+			<div class="tip text-center text-danger absolute" id="signInTip"></div>
+			<div class="signP overflow">
+				<div class="icon pull-left"><i class="fa fa-user"></i></div>
+				<div class="input pull-left"><input type="text" id="inUser" class="radius" placeholder="name.."/></div>
+			</div>
+			<div class="signP overflow">
+				<div class="icon pull-left"><i class="fa fa-lock"></i></div>
+				<div class="input pull-left"><input type="password" id="inPsw" class="radius" placeholder="password.."/></div>
+			</div>
+			<div class="signP login">
+				<button class=" btn-green form-control" type="button" id="signInBtn">SIGN IN</button>
+			</div>
+		</div>
+	</div>
+	
+	<div class="loadBox animated tapBox relative">
+		<div class="signTitle relative">UPLOAD<span class="absolute close"><i class="fa fa-times"></i></inspan></div>
+		<div class="signBox">
+			<form id="uploadForm" class="form-horizontal" role="form" style="padding-top: 20px;" method="post" enctype="multipart/form-data" action="upload_work">
+			<div class="tip text-center text-danger absolute" id="uploadTip"></div>
+      <div class="form-group">
+        <label for="songName" class="col-sm-3 control-label">歌名</label>
+        <div class="col-sm-9">
+          <input type="text" name="songName" class="form-control" id="songName" placeholder="song name..">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="file" class="col-sm-3 control-label">歌曲文件</label>
+        <div class="col-sm-9">
+          <input type="file" name="file" class="form-control" id="file">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="file" class="col-sm-3 control-label">歌曲封面</label>
+        <div class="col-sm-9">
+          <input type="file" name="fileImg" class="form-control" id="fileImg">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="file" class="col-sm-3 control-label">歌曲分类</label>
+        <div class="col-sm-9">
+          <select name="fileType" id="selectType" class="form-control">
+          	<option value="Cover">翻唱</option>
+          	<option value="Guitar">吉他弹唱</option>
+          	<!--<option value="Video">视频弹唱</option>-->
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="file" class="col-sm-3 control-label">歌曲描述</label>
+        <div class="col-sm-9">
+          <textarea id="fileText" name="fileText" rows="" cols="" class="form-control" placeholder="describe..."></textarea>
+        </div>
+      </div>
+			<div class="signP login">
+				<button class=" btn-green form-control" type="button" id="uploadBtn">上传作品</button>
+			</div>
+			</form>
+		</div>
+	</div>
+
+	<div class="signUpBox animated tapBox relative">
+		<div class="signTitle relative">SIGN UP<span class="absolute close"><i class="fa fa-times"></i></inspan></div>
+		<div class="signBox">
+			<form action="sign_up" id="signUpForm" enctype="multipart/form-data" method="post">
+				<div class="tip text-center text-danger absolute" id="signUpTip"></div>
+				<div class="signP overflow">
+					<div class="icon pull-left"><i class="fa fa-user"></i></div>
+					<div class="input pull-left"><input type="text" id="upUser" name='user' class="radius" placeholder="name.."/></div>
+				</div>
+				<div class="signP overflow">
+					<div class="icon pull-left"><i class="fa fa-lock"></i></div>
+					<div class="input pull-left"><input type="password" id="upPsw" name='password' class="radius" placeholder="password.."/></div>
+				</div>
+				<div class="signP overflow">
+					<div class="pull-left text-center" style="width: 60px;padding-top: 7px;">头像</div>
+					<div class="input pull-left" style="padding-left: 10px;"><input type="file" id="upHead" name="head" class="headBottom form-control"/></div>
+				</div>
+				<div class="signP login">
+					<button class=" btn-green form-control" type="button" id="signUpBtn">SIGN UP</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="tipBox animated"></div>
+	
+	<div class="Info" id="musicInfo"></div>
+		<!--------------js--------------->
+		<script src="js/jquery-1.11.1.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="js/jquery-ui-1.10.4.min.js"></script> 
+        <script src="js/jquery.mousewheel-3.0.6.min.js"></script>
+        <script src="js/jquery.mCustomScrollbar.min.js"></script>
+		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+<!--		<script src="js/ejs_fulljslint.js" type="text/javascript" charset="utf-8"></script>-->
+		<script src="js/ejs_production.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/app.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/post.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+
+</html>

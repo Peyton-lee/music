@@ -1,0 +1,17 @@
+<%if(list.length==0){%>
+   <p class="text-center text-muted">暂无评论</p>
+<%}else{%>
+    <%for(var i=0;i<list.length;i++){%>
+       <div class="comBox overflow">
+        <div class="comBoxL pull-left">
+            <img src="<%=list[i].head%>" width="40" height="40" alt="" />
+        </div>
+        <div class="comBoxR pull-left overflow">
+            <div class="pull-left comInfo"><b><%=list[i].user%></b>
+                <p class="font-sm text-muted pull-right"><%=list[i].timex%></p>
+            </div>
+            <div class="font-sm conInfoRel clear"><%=list[i].comment%></div>
+        </div>
+    </div>
+    <%}%>
+<%}%>

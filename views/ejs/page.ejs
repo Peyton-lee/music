@@ -1,0 +1,25 @@
+<%if(page_total>0){%>
+<div class="btn-group">
+	<button type="button" class="btn btn-sm btn-default turn-left  <%if(page==1){%>disabled<%}%>" <%if(page==1){%>disabled<%}%>><i class="fa fa-angle-left"></i></button>
+	<%if(page_total<6){%>
+	<%for(var i=0;i<page_total;i++){%>
+	<button type="button" class="btn btn-sm btn-default branch-btn <%if((i+1)==page){%>active<%}%>"><%=i+1%></button>
+	<%}%>
+	<%}else{%>
+	<%for(var i=0;i<5;i++){%>
+	<%if(page>(page_total-2)){%>
+	<button type="button" class="btn btn-sm btn-default branch-btn <%if(i==(4-(page_total-page))){%>active<%}%>"><%=page_total-(4-i)%></button>
+	<%}else if(page<3){%>
+	<button type="button" class="btn btn-sm btn-default branch-btn  <%if((i+1)==page){%>active<%}%>"><%=5-(4-i)%></button>
+	<%}else{%>
+	<button type="button" class="btn btn-sm btn-default branch-btn <%if(i==2){%>active<%}%>"><%=page-2+i%></button>
+	<%}%>
+	<%}%>
+	<%}%>
+	<button type="button" class="btn btn-sm btn-default turn-right <%if(page==page_total){%>disabled<%}%>" <%if(page==page_total){%>disabled<%}%>><i class="fa fa-angle-right"></i></button>
+</div>
+    <div class="hide">
+    	<div id="page"><%=page%></div>
+    	<div id="record"><%=record%></div>
+    </div>
+<%}%>

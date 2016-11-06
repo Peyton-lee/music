@@ -1,0 +1,33 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "个人博客",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "\u0016https://github.com/Peyton-lee/Shop"
+  },
+  "keywords": [
+    "Peyton123"
+  ],
+  "author": "Peyton-lee",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "crypto-js": "^3.1.6",
+    "dateformat": "^1.0.12",
+    "ejs": "^2.5.2",
+    "express": "^4.14.0",
+    "express-session": "^1.14.1",
+    "formidable": "^1.0.17",
+    "log-util": "^1.1.2",
+    "mysql": "github:felixge/node-mysql",
+    "node-uuid": "^1.4.7",
+    "path": "^0.12.7",
+    "unix-time": "^1.0.1"
+  }
+}

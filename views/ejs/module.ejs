@@ -1,0 +1,30 @@
+<%if(list.length==0){%>
+<p></p>
+<div class="col-md-12 text-center text-muted">暂无数据</div>
+<%}else{%>
+<%for(var i=0;i<list.length;i++){%>
+<div class="col-md-3 song col-xs-6 transition">
+	<div class="song_li">
+		<a href="javascript:;" class="songImg relative"><img src="<%=list[i].img%>" alt="" />
+			<div class="absolute mask"></div>
+			<div class="playBtn absolute">
+				<i class="fa fa-play"></i>
+			</div>
+			<div class="hide">
+				<audio id="music_<%=list[i].id%>" src="<%=list[i].file%>" controls="controls" loop="loop">
+				</audio>
+			</div>
+		</a>
+		<div class="song_bo">
+			<div class="song_bo_l pull-left">
+				<a href="javascript:;" class="song_name"><b><%=list[i].songName%></b></a>
+				<a href="#" class="man"><%=list[i].user%></a>
+			</div>
+			<div class="song_bo_r pull-left text-right">
+				<i class="iconfont ">&#xe7c4;</i><span class="zanNum"><%=list[i].zanNum%></span>
+			</div>
+		</div>
+	</div>
+</div>
+<%}%>
+<%}%>
