@@ -28,7 +28,7 @@ app.use(session({
 
 
 //解析参数
-app.use(bodyParser());
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
